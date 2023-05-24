@@ -1,12 +1,13 @@
+require('dotenv').config()
 const axios = require('axios');
 const { STATUS_CODES } = require('http');
 const { Webhook, MessageBuilder } = require('discord-webhook-node');
 
 // API endpoint URL to ping
-const apiUrl = 'https://toho.mnz.gg/api/v1/ping';
+const apiUrl = process.env.API_URL;
 
 // Discord webhook URL to send messages
-const webhookUrl = 'https://discord.com/api/webhooks/1110880167536099328/GE6T1D81sGFvG08EOMdAo3sL1WIizowu-t78An0L9fcbgL6BAkoH0Lu74rtilS1KJUqO';
+const webhookUrl = process.env.WEBHOOK;
 
 // Create a new Discord webhook instance
 const webhook = new Webhook(webhookUrl);
