@@ -2,8 +2,9 @@
   "name": "toho-mon",
   "version": "0.0.1",
   "description": "Toho Miku monitoring",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "monitor": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Minz",
