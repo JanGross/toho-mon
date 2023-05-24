@@ -1,5 +1,5 @@
 const axios = require('axios');
-const STATUS_CODES = require('http');
+const { STATUS_CODES } = require('http');
 const { Webhook, MessageBuilder } = require('discord-webhook-node');
 
 // API endpoint URL to ping
@@ -41,7 +41,7 @@ async function pingEndpoint() {
         // Send an error message to the Discord webhook
         consecutiveFailures += 1;
         console.log(`ERROR PINGING API. HARD FAIL (${consecutiveFailures})`);
-        handleFailure(`Error occurred while pinging the API endpoint.\n${error}`);
+        handleFailure(`Error occurred while pinging the API endpoint.\n${error.message}\n${STATUS_CODES[error.response.status]}`);
     }
 }
 
