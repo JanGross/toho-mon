@@ -42,7 +42,7 @@ async function pingEndpoint() {
         // Send an error message to the Discord webhook
         consecutiveFailures += 1;
         console.log(`ERROR PINGING API. HARD FAIL (${consecutiveFailures})`);
-        handleFailure(`Error occurred while pinging the API endpoint.\n${error.message}\n${STATUS_CODES[error.response.status]}`);
+        handleFailure(`Error occurred while pinging the API endpoint.\n${error.message}\n${STATUS_CODES[error.response?.status]}`);
     }
 }
 
