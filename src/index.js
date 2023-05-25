@@ -18,6 +18,11 @@ const images = {
     up: "https://cdn.discordapp.com/attachments/1083687175998152714/1110913780268924958/605e7b80-9b97-4792-b903-eaa482dd7f11.jpeg"
 }
 
+const threshold = {
+    warn: 5,
+    down: 10
+}
+
 let consecutiveFailures = 0;
 
 // Function to ping the API endpoint
@@ -29,7 +34,7 @@ async function pingEndpoint() {
         // Check if the response status is successful (2xx)
         if (response.status === 200) {
             console.log('API endpoint is online.');
-            if (consecutiveFailures != 0) {
+            if (consecutiveFailures >= threshold.warn) {
                 consecutiveFailures = 0;
                 sendNotification("Recovered", "The system has recovered", color='#00FF00', image=images.up);
             }
@@ -49,11 +54,11 @@ async function pingEndpoint() {
 function handleFailure(errorMessage) {
     console.error(errorMessage);
 
-    if (consecutiveFailures == 10) {
+    if (consecutiveFailures == threshold.down) {
         sendNotification("Down", errorMessage, color='#ff0000', image=images.down);
         return;
     }
-    if (consecutiveFailures == 5) {
+    if (consecutiveFailures == threshold.warn) {
         sendNotification("Intermittent issues", errorMessage, '#D9B611');
         return;
     }
