@@ -19,8 +19,8 @@ const images = {
 }
 
 const threshold = {
-    warn: 5,
-    down: 10
+    warn: 10,
+    down: 20
 }
 
 let consecutiveFailures = 0;
