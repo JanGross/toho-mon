@@ -29,7 +29,7 @@ let consecutiveFailures = 0;
 async function pingEndpoint() {
     try {
         // Send a GET request to the API endpoint
-        const response = await axios({ url: apiUrl, timeout: 1000, method: 'get' });
+        const response = await axios({ url: apiUrl, timeout: 5000, method: 'get' });
 
         // Check if the response status is successful (2xx)
         if (response.status === 200) {
