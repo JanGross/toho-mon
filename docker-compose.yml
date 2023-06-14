@@ -4,4 +4,7 @@ services:
   monitor:
     image: node:20-alpine
     command: npm run monitor
+    working_dir: /app
     restart: unless-stopped
+    volumes:
+      - ./:/app
