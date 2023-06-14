@@ -1,0 +1,7 @@
+version: "3.7"
+
+services:
+  monitor:
+    image: node:20-alpine
+    command: npm run monitor
+    restart: unless-stopped
